@@ -38,7 +38,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-2 mb-4">
             <img
               loading="lazy"
-              src="https://desertrainllc.com/images/desertrain-logo.png"
+              src="/images/desertrain-logo.png"
               alt="Desert Rain Logo"
               className="h-8 w-auto bg-white p-1 rounded"
             />

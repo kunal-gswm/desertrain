@@ -47,7 +47,7 @@ export function CheckoutPage({ onNav }: { onNav: (s: Screen) => void }) {
       <header className="bg-white border-b border-[#E5E7EB]">
         <div className="max-w-[1280px] mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => onNav("home")}>
-            <img src="https://desertrainllc.com/images/desertrain-logo.png" alt="Desert Rain" className="h-8 w-auto" />
+            <img src="/images/desertrain-logo.png" alt="Desert Rain" className="h-8 w-auto" />
           </div>
           <div className="text-[13px] text-[#94A3B8] flex items-center gap-1.5"><Lock className="w-3.5 h-3.5" /> Secure Checkout</div>
         </div>

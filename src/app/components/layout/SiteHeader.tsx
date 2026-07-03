@@ -29,8 +29,6 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
               <Phone className="w-3.5 h-3.5 text-[#94A3B8]" />
               1-800-MCR-4321
             </span>
-            <span className="text-[#E5E7EB]">|</span>
-            <span>Mon–Fri 7 AM – 7 PM EST</span>
           </div>
           <div className="flex items-center gap-6">
             <select className="bg-transparent text-[#475569] font-medium text-[13px] outline-none cursor-pointer hover:text-[#1B2332]">
@@ -59,7 +57,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             onClick={() => onNav("home")}
           >
             <img
-              src="https://desertrainllc.com/images/desertrain-logo.png"
+              src="/images/desertrain-logo.png"
               alt="Desert Rain LLC"
               className="h-9 md:h-10 w-auto"
             />
@@ -195,7 +193,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
           <div className="relative w-[85%] max-w-sm bg-white h-full flex flex-col shadow-2xl animate-[slideInRight_0.2s_ease-out]">
             <div className="flex items-center justify-between p-4 border-b border-[#E5E7EB]">
               <img
-                src="https://desertrainllc.com/images/desertrain-logo.png"
+                src="/images/desertrain-logo.png"
                 alt="Logo"
                 className="h-7 w-auto"
               />
@@ -272,14 +270,10 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             </div>
 
             {/* Mobile Drawer Footer */}
-            <div className="p-4 border-t border-[#E5E7EB] bg-[#FAFBFC] text-[12px] text-[#94A3B8] space-y-1">
+            <div className="p-4 border-t border-[#E5E7EB] bg-[#FAFBFC] text-[12px] text-[#94A3B8]">
               <div className="flex items-center justify-between">
                 <span>Support:</span>
                 <span className="font-medium text-[#475569]">1-800-MCR-4321</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Hours:</span>
-                <span>Mon–Fri 7am–7pm EST</span>
               </div>
             </div>
           </div>
