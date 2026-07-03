@@ -57,7 +57,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             onClick={() => onNav("home")}
           >
             <img
-              src="/images/desertrain-logo.png"
+              src="https://desertrainllc.com/images/desertrain-logo.png"
               alt="Desert Rain LLC"
               className="h-9 md:h-10 w-auto"
             />
@@ -193,7 +193,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
           <div className="relative w-[85%] max-w-sm bg-white h-full flex flex-col shadow-2xl animate-[slideInRight_0.2s_ease-out]">
             <div className="flex items-center justify-between p-4 border-b border-[#E5E7EB]">
               <img
-                src="/images/desertrain-logo.png"
+                src="https://desertrainllc.com/images/desertrain-logo.png"
                 alt="Logo"
                 className="h-7 w-auto"
               />
