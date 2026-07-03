@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   Menu, Search, ShoppingCart, User, ChevronDown, ChevronRight,
-  X, Phone, FileText,
+  X, Phone, FileText, Building,
 } from "lucide-react";
 import type { Screen } from "../../types";
 import { CATEGORIES } from "../../data/mockData";
@@ -33,13 +33,6 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             <span>Mon–Fri 7 AM – 7 PM EST</span>
           </div>
           <div className="flex items-center gap-6">
-            <button
-              className="text-[#475569] hover:text-[#1B2332] font-medium transition-colors"
-              onClick={() => onNav("distributor-register")}
-            >
-              Login for distributor pricing
-            </button>
-            <span className="text-[#E5E7EB]">|</span>
             <select className="bg-transparent text-[#475569] font-medium text-[13px] outline-none cursor-pointer hover:text-[#1B2332]">
               <option value="USD">USD ($)</option>
               <option value="AED">AED (د.إ)</option>
@@ -113,6 +106,14 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
 
             {/* Divider */}
             <div className="hidden md:block h-7 w-px bg-[#E5E7EB] mx-2" />
+
+            {/* B2B / Distributor Portal CTA */}
+            <div className="hidden md:block">
+              <Btn size="sm" variant="secondary" onClick={() => onNav("distributor-register")}>
+                <Building className="w-3.5 h-3.5 mr-1.5 text-[#64748B]" />
+                Distributor Portal
+              </Btn>
+            </div>
 
             {/* Request Quote CTA */}
             <div className="hidden md:block">
@@ -259,13 +260,13 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
                   <FileText className="w-4 h-4 text-[#64748B]" /> Request Quote
                 </button>
                 <button
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-[14px] font-medium text-[#16A34A] hover:bg-[#F0FDF4] transition-colors"
+                  className="w-full flex items-center gap-3 px-5 py-3.5 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onNav("distributor-register");
                   }}
                 >
-                  Login for distributor pricing →
+                  <Building className="w-4 h-4 text-[#64748B]" /> Distributor Portal
                 </button>
               </div>
             </div>
