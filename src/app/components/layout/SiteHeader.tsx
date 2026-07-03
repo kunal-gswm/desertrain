@@ -10,10 +10,9 @@ import { Btn } from "../shared/Btn";
 /**
  * SiteHeader — Redesigned per client prompt.
  *
- * Structure (top to bottom — max 3 bars on desktop, 1 on mobile):
- * 1. Utility bar: plain white bar with 1px border, light text (hidden on mobile).
- * 2. Main header: logo + wide search + account/cart + "Request Quote" CTA.
- * 3. Unified Navigation Row: "All Categories ↓" mega-menu trigger + individual category links.
+ * Structure (top to bottom):
+ * 1. Main header: logo + wide search + account/cart + "Request Quote" CTA.
+ * 2. Unified Navigation Row: "All Categories ↓" mega-menu trigger + individual category links.
  */
 export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Screen) => void; showCategories?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,25 +20,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
 
   return (
     <div className="sticky top-0 z-40 bg-white">
-      {/* ── Bar 1: Light Utility Bar (Desktop only) ── */}
-      <div className="hidden md:flex bg-white border-b border-[#E5E7EB] text-[#64748B] text-[13px] py-1.5 px-6 items-center justify-between">
-        <div className="max-w-[1280px] mx-auto w-full flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-[#475569]">
-              <Phone className="w-3.5 h-3.5 text-[#94A3B8]" />
-              1-800-MCR-4321
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <select className="bg-transparent text-[#475569] font-medium text-[13px] outline-none cursor-pointer hover:text-[#1B2332]">
-              <option value="USD">USD ($)</option>
-              <option value="AED">AED (د.إ)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Bar 2: Main Header ── */}
+      {/* ── Main Header ── */}
       <header className="bg-white">
         <div className="max-w-[1280px] mx-auto px-4 md:px-6 h-16 flex items-center gap-4 justify-between">
           {/* Mobile Menu Toggle */}
