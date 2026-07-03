@@ -60,6 +60,18 @@ export default function App() {
   const idx = SCREENS.findIndex((s) => s.id === screen);
 
   const navigate = (s: Screen) => {
+    if (["about", "brands", "source-supply", "locator", "contact"].includes(s)) {
+      setScreen("home");
+      setTimeout(() => {
+        const el = document.getElementById(s);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }, 50);
+      return;
+    }
     setScreen(s);
     window.scrollTo(0, 0);
   };
