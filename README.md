@@ -2,20 +2,6 @@
 
 A specialized B2B ecommerce platform built with React, Vite, and Tailwind CSS. Designed specifically for industrial procurement and medical supply, avoiding generic SaaS aesthetics in favor of a dense, data-first "Grainger/McMaster-Carr" style layout.
 
-## Screenshots
-
-### Homepage
-![Homepage](screenshots/home.png)
-
-### Category Catalog
-![Category Catalog](screenshots/category.png)
-
-### Product Detail
-![Product Detail](screenshots/product.png)
-
-### Checkout Flow
-![Checkout Flow](screenshots/checkout.png)
-
 ## Technology Stack
 - **Framework:** React + Vite
 - **Styling:** Tailwind CSS
