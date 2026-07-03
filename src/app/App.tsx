@@ -31,8 +31,8 @@ const SCREENS: { id: Screen; label: string }[] = [
   { id: "rfq", label: "08 RFQ" },
   { id: "distributor-register", label: "09 Dist. Register" },
   { id: "distributor-pricing", label: "10 Dist. Pricing" },
-  { id: "admin-cms", label: "11 Admin CMS" },
-  { id: "admin-ims", label: "12 Admin IMS" },
+  { id: "admin-cms", label: "11 Admin (Catalog)" },
+  { id: "admin-ims", label: "12 Admin (Inventory)" },
   { id: "notifications", label: "13 Notifications" },
   { id: "components", label: "14 Components" },
 ];
