@@ -128,7 +128,7 @@ export function SiteFooter({ onNav }: { onNav?: (s: Screen) => void }) {
       {/* Bottom bar — trust signals in ONE quiet line */}
       <div className="border-t border-white/10">
         <div className="max-w-[1280px] mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/35">
-          <div>© 2025 Desert Rain LLC. All rights reserved. Official Scope Correction Architecture.</div>
+          <div>© 2025 Desert Rain LLC. All rights reserved.</div>
           <div className="flex items-center gap-4">
             {["Privacy Policy", "Terms of Service", "Return Policy", "Cookie Policy", "Disclaimer"].map(
               (l) => (

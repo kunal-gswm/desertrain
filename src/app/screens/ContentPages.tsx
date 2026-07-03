@@ -42,9 +42,6 @@ export function StoreCataloguePage({ onNav }: { onNav: (s: Screen) => void }) {
       <main className="flex-1 max-w-[1280px] w-full mx-auto px-6 py-8">
         <div className="bg-[#1B2332] text-white rounded-[12px] p-8 mb-8 shadow-md relative overflow-hidden">
           <div className="relative z-10 max-w-2xl">
-            <span className="bg-[#0284C7] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3 inline-block">
-              Official B2B Medical Catalogue
-            </span>
             <h1 className="text-[30px] font-bold mb-2">Desert Rain Store & Catalogue</h1>
             <p className="text-white/70 text-[14.5px] leading-relaxed">
               Explore deep category tree hierarchies, specialized clinical filters (skin tone, series, package sizes), and live back-order production lead times.
@@ -440,7 +437,6 @@ export function GenericContentPage({ screen, onNav }: { screen: Screen; onNav: (
       <SiteHeader onNav={onNav} />
       <main className="flex-1 max-w-[1280px] w-full mx-auto px-6 py-12">
         <div className="bg-white border border-[#E5E7EB] rounded-[16px] p-10 shadow-2xs max-w-3xl mx-auto space-y-6 text-center">
-          <span className="text-[#0284C7] font-bold text-[12px] uppercase tracking-wider bg-[#E0F2FE] px-3 py-1 rounded-full inline-block">Official Scope Page</span>
           <h1 className="text-[34px] font-bold text-[#1B2332]">{current.title}</h1>
           <p className="text-[16px] text-[#0284C7] font-semibold">{current.subtitle}</p>
           <div className="text-[15px] text-[#475569] leading-relaxed text-left bg-[#F8FAFC] p-6 rounded-[10px] border border-[#E5E7EB]">
