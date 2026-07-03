@@ -51,16 +51,47 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             <Menu className="w-6 h-6" />
           </button>
 
-          {/* Logo */}
-          <div
-            className="flex items-center gap-2.5 shrink-0 cursor-pointer"
-            onClick={() => onNav("home")}
-          >
-            <img
-              src="https://desertrainllc.com/images/desertrain-logo.png"
-              alt="Desert Rain LLC"
-              className="h-9 md:h-10 w-auto"
-            />
+          {/* Logo & Catalog Trigger */}
+          <div className="flex items-center gap-6 shrink-0">
+            <div
+              className="flex items-center gap-2.5 shrink-0 cursor-pointer"
+              onClick={() => onNav("home")}
+            >
+              <img
+                src="https://desertrainllc.com/images/desertrain-logo.png"
+                alt="Desert Rain LLC"
+                className="h-9 md:h-10 w-auto"
+              />
+            </div>
+
+            {/* All Categories Mega-Menu Trigger */}
+            <div className="hidden md:block relative group shrink-0">
+              <button
+                className="flex items-center gap-1.5 px-3 py-2 text-[14px] font-semibold text-[#1B2332] hover:text-[#475569] transition-colors rounded-[6px] hover:bg-[#F1F3F5]"
+                onClick={() => onNav("category")}
+              >
+                All Categories <ChevronDown className="w-4 h-4 text-[#94A3B8] group-hover:rotate-180 transition-transform" />
+              </button>
+              {/* Mega Menu Dropdown */}
+              <div className="absolute top-full left-0 mt-2 w-[600px] bg-white border border-[#E5E7EB] rounded-[8px] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 p-6 grid grid-cols-2 gap-x-8 gap-y-2">
+                <div className="col-span-2 pb-2 mb-2 border-b border-[#E5E7EB] flex items-center justify-between">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#94A3B8]">Medical & Safety Catalog</span>
+                  <span className="text-[12px] font-medium text-[#1B2332] hover:underline cursor-pointer flex items-center gap-1" onClick={() => onNav("category")}>View full catalog <ChevronRight className="w-3 h-3" /></span>
+                </div>
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat.id}
+                    className="flex items-center justify-between text-left group/item py-2 px-3 -mx-3 rounded-[6px] hover:bg-[#F8FAFC] transition-colors"
+                    onClick={() => onNav("category")}
+                  >
+                    <span className="text-[14px] font-medium text-[#475569] group-hover/item:text-[#1B2332] transition-colors">
+                      {cat.label}
+                    </span>
+                    <span className="text-[12px] text-[#94A3B8] group-hover/item:text-[#475569]">{cat.count} items</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Search — desktop */}
@@ -132,55 +163,6 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             />
           </div>
         </div>
-
-        {/* ── Bar 3: Unified Primary Navigation Row — desktop ── */}
-        {showCategories && (
-          <div className="hidden md:block border-t border-[#E5E7EB] bg-white relative">
-            <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
-              {/* All Categories Mega-Menu Trigger */}
-              <div className="relative group shrink-0 border-r border-[#E5E7EB] pr-6 mr-3">
-                <button
-                  className="flex items-center gap-1.5 py-3 text-[14px] font-semibold text-[#1B2332] hover:text-[#475569] transition-colors"
-                  onClick={() => onNav("category")}
-                >
-                  All Categories <ChevronDown className="w-4 h-4 text-[#94A3B8] group-hover:rotate-180 transition-transform" />
-                </button>
-                {/* Mega Menu Dropdown */}
-                <div className="absolute top-full left-0 w-[600px] bg-white border border-[#E5E7EB] rounded-b-[8px] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 p-6 grid grid-cols-2 gap-x-8 gap-y-2">
-                  <div className="col-span-2 pb-2 mb-2 border-b border-[#E5E7EB] flex items-center justify-between">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#94A3B8]">Medical & Safety Catalog</span>
-                    <span className="text-[12px] font-medium text-[#1B2332] hover:underline cursor-pointer flex items-center gap-1" onClick={() => onNav("category")}>View full catalog <ChevronRight className="w-3 h-3" /></span>
-                  </div>
-                  {CATEGORIES.map((cat) => (
-                    <button
-                      key={cat.id}
-                      className="flex items-center justify-between text-left group/item py-2 px-3 -mx-3 rounded-[6px] hover:bg-[#F8FAFC] transition-colors"
-                      onClick={() => onNav("category")}
-                    >
-                      <span className="text-[14px] font-medium text-[#475569] group-hover/item:text-[#1B2332] transition-colors">
-                        {cat.label}
-                      </span>
-                      <span className="text-[12px] text-[#94A3B8] group-hover/item:text-[#475569]">{cat.count} items</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Individual Category Links */}
-              <div className="flex items-center gap-1 overflow-x-auto scrollbar-none flex-1">
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    className="px-3.5 py-3 text-[13.5px] font-medium text-[#475569] hover:text-[#1B2332] whitespace-nowrap border-b-2 border-transparent hover:border-[#1B2332] transition-colors"
-                    onClick={() => onNav("category")}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* ── Mobile Menu Drawer (375px collapsed state) ── */}
