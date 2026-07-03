@@ -79,8 +79,14 @@ export function ProductDetailPage({ onNav }: { onNav: (s: Screen) => void }) {
           {/* ── Product Info ── */}
           <div>
             {/* Meta */}
-            <div className="flex items-center gap-2 mb-2 text-[13px] text-[#94A3B8]">
-              <span>SKU: {product.sku}</span>
+            <div className="flex flex-wrap items-center gap-2 mb-2 text-[13px] text-[#94A3B8]">
+              <span>SKU: <strong className="text-[#475569]">{product.sku}</strong></span>
+              {product.itemCode && (
+                <>
+                  <span className="text-[#E5E7EB]">·</span>
+                  <span>Distributor Code: <strong className="text-[#0284C7] font-mono">{product.itemCode}</strong></span>
+                </>
+              )}
               <span className="text-[#E5E7EB]">·</span>
               <span>{product.brand}</span>
             </div>
@@ -243,19 +249,44 @@ export function ProductDetailPage({ onNav }: { onNav: (s: Screen) => void }) {
               </div>
             )}
             {tab === "documents" && (
-              <div className="space-y-2 max-w-lg">
-                {[["Product Data Sheet", "1.2 MB"], ["Safety Data Sheet (SDS)", "0.8 MB"], ["User Manual", "4.1 MB"], ["CE Declaration of Conformity", "0.4 MB"]].map(([name, size]) => (
-                  <div key={name} className="flex items-center justify-between p-3 border border-[#E5E7EB] rounded-[6px] bg-white hover:border-[#CBD5E1] transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#FEF2F2] rounded-[6px] flex items-center justify-center"><FileText className="w-4 h-4 text-[#DC2626]" /></div>
-                      <div>
-                        <div className="text-[14px] font-medium text-[#1B2332]">{name}</div>
-                        <div className="text-[12px] text-[#94A3B8]">PDF · {size}</div>
-                      </div>
+              <div className="space-y-4 max-w-xl">
+                <div className="p-4 bg-[#E0F2FE]/40 border border-[#BAE6FD] rounded-[8px] mb-4">
+                  <div className="text-[13px] font-bold text-[#0369A1] uppercase tracking-wider mb-1">Official Clinical Attachments</div>
+                  <p className="text-[13px] text-[#475569]">Includes physical dimensions, shipping weights, and AHA compliance certificates for corporate procurement.</p>
+                </div>
+
+                <div className="flex items-center justify-between p-3.5 border border-[#E5E7EB] rounded-[8px] bg-white hover:border-[#0284C7] transition-all shadow-2xs">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 bg-[#FEF2F2] rounded-[6px] flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-[#DC2626]" /></div>
+                    <div>
+                      <div className="text-[14px] font-bold text-[#1B2332]">Product Datasheet PDF</div>
+                      <div className="text-[12px] text-[#64748B] mt-0.5">Weight: 3.2 lbs · Dimensions: 19"×7"×4" · 1.2 MB</div>
                     </div>
-                    <Btn size="sm" variant="ghost"><Download className="w-3.5 h-3.5" /> Download</Btn>
                   </div>
-                ))}
+                  <Btn size="sm" variant="secondary" onClick={() => alert("Downloading Official Datasheet PDF...")}><Download className="w-3.5 h-3.5 mr-1" /> Download</Btn>
+                </div>
+
+                <div className="flex items-center justify-between p-3.5 border border-[#E5E7EB] rounded-[8px] bg-white hover:border-[#0284C7] transition-all shadow-2xs">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 bg-[#EFF6FF] rounded-[6px] flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-[#2563EB]" /></div>
+                    <div>
+                      <div className="text-[14px] font-bold text-[#1B2332]">User Manual & Clinical Setup Guide</div>
+                      <div className="text-[12px] text-[#64748B] mt-0.5">Comprehensive assembly & maintenance instructions · PDF 4.1 MB</div>
+                    </div>
+                  </div>
+                  <Btn size="sm" variant="secondary" onClick={() => alert("Downloading User Manual PDF...")}><Download className="w-3.5 h-3.5 mr-1" /> Download</Btn>
+                </div>
+
+                <div className="flex items-center justify-between p-3.5 border border-[#E5E7EB] rounded-[8px] bg-white hover:border-[#0284C7] transition-all shadow-2xs">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 bg-[#F0FDF4] rounded-[6px] flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-[#16A34A]" /></div>
+                    <div>
+                      <div className="text-[14px] font-bold text-[#1B2332]">Video Demonstration & Maintenance Guide</div>
+                      <div className="text-[12px] text-[#64748B] mt-0.5">HD Video Stream · AHA 2020 Rate Monitor Calibration</div>
+                    </div>
+                  </div>
+                  <Btn size="sm" onClick={() => alert("Opening Video Guide Stream...")}>Watch Video</Btn>
+                </div>
               </div>
             )}
             {tab === "reviews" && (
@@ -291,6 +322,22 @@ export function ProductDetailPage({ onNav }: { onNav: (s: Screen) => void }) {
                 ))}
               </div>
             )}
+          </div>
+        </div>
+
+        {/* ── Required Scope: Suggested Accessories & Consumables Cross-Sell Section ── */}
+        <div className="mt-12 pt-8 border-t border-[#E5E7EB]">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <span className="text-[12px] font-bold text-[#0284C7] uppercase tracking-wider">Frequently Bought Together</span>
+              <h3 className="text-[22px] font-bold text-[#1B2332] mt-0.5">Suggested Accessories & Clinical Consumables</h3>
+            </div>
+            <span className="text-[13px] text-[#64748B] hidden sm:inline">Add compatible replacement bags, shields, and carrying cases</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {PRODUCTS.slice(3, 7).map((p) => (
+              <ProductCard key={p.id} product={p} onNav={onNav} onAddToCart={() => setToastProduct(p)} />
+            ))}
           </div>
         </div>
       </div>

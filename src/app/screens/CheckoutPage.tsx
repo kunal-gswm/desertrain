@@ -13,16 +13,18 @@ export function CheckoutPage({ onNav }: { onNav: (s: Screen) => void }) {
   const steps = [{ n: 1, label: "Shipping" }, { n: 2, label: "Delivery" }, { n: 3, label: "Payment" }];
 
   const deliveryMethods = [
-    { id: "std", label: "Standard Ground", carrier: "DHL / SkyEx", days: "5–7 business days", eta: "Est. delivery: Jul 8, 2025", price: 24.95 },
-    { id: "exp", label: "Express 2-Day", carrier: "DHL Express", days: "2 business days", eta: "Est. delivery: Jul 3, 2025", price: 54.95 },
-    { id: "ovn", label: "Overnight Priority", carrier: "DHL Priority / SkyEx Next Day", days: "Next business day", eta: "Est. delivery: Jul 1, 2025", price: 94.95 },
-    { id: "frgt", label: "LTL Freight", carrier: "For heavy/large orders over 150 lbs", days: "5–10 business days", eta: "Est. delivery: Jul 10, 2025", price: 0 },
+    { id: "std", label: "Aramex GCC Standard Ground", carrier: "Aramex Logistics Partner", days: "3–5 business days", eta: "Est. delivery: Jul 8, 2025", price: 24.95 },
+    { id: "exp", label: "DHL Express Medical Air", carrier: "DHL Healthcare Priority", days: "1–2 business days", eta: "Est. delivery: Jul 3, 2025", price: 54.95 },
+    { id: "ovn", label: "FedEx Healthcare Priority Next Day", carrier: "FedEx Medical Courier", days: "Next business day morning", eta: "Est. delivery: Jul 1, 2025", price: 94.95 },
+    { id: "frgt", label: "Kuehne + Nagel Pallet Freight", carrier: "LTL Heavy / Bulk orders over 150 lbs", days: "5–10 business days", eta: "Est. delivery: Jul 10, 2025", price: 0 },
   ];
 
   const paymentMethods = [
-    { id: "cc", label: "Credit / Debit Card", icon: CreditCard },
-    { id: "po", label: "Purchase Order Number", icon: FileText },
-    { id: "net30", label: "Net 30 Terms (Approved Accounts)", icon: Building },
+    { id: "cc", label: "Credit / Debit Card (Visa, Mastercard, Amex)", icon: CreditCard },
+    { id: "tabby", label: "Tabby — Split into 4 interest-free payments (GCC)", icon: Building },
+    { id: "tamara", label: "Tamara — Split into 3 installments without fees (GCC)", icon: Building },
+    { id: "po", label: "Purchase Order Number (Hospital & Institutional)", icon: FileText },
+    { id: "net30", label: "Net 30 Terms (Approved B2B Distributor Accounts)", icon: Building },
   ];
 
   const subtotal = 654.83;
@@ -163,6 +165,17 @@ export function CheckoutPage({ onNav }: { onNav: (s: Screen) => void }) {
                             <FieldInput label="CVV" placeholder="•••" inputMode="numeric" />
                           </div>
                           <FieldInput label="Name on Card" placeholder="John Smith" />
+                        </div>
+                      )}
+                      {selectedPayment === m.id && (m.id === "tabby" || m.id === "tamara") && (
+                        <div className="px-4 py-4 border-t border-[#E5E7EB] bg-[#F8FAFC] space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[13px] font-bold text-[#1B2332]">4 Interest-Free Payments of ${(total / 4).toFixed(2)}</span>
+                            <span className="text-[10px] font-bold bg-[#E0F2FE] text-[#0369A1] px-2 py-0.5 rounded uppercase">GCC BNPL Ready</span>
+                          </div>
+                          <p className="text-[12.5px] text-[#475569] leading-relaxed">
+                            {m.id === "tabby" ? "Tabby" : "Tamara"} installment widget will initialize automatically upon clicking Place Order. No hidden fees or interest charges for healthcare institutions and retail orders.
+                          </p>
                         </div>
                       )}
                     </div>

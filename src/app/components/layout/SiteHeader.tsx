@@ -163,6 +163,60 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
             />
           </div>
         </div>
+
+        {/* ── Bar 3: Lean Primary Navigation Row — Desktop ── */}
+        <div className="hidden md:block border-t border-[#E5E7EB] bg-[#FAFBFC]">
+          <div className="max-w-[1280px] mx-auto px-6 h-11 flex items-center justify-between text-[13.5px] font-medium text-[#475569]">
+            <div className="flex items-center gap-7">
+              <button onClick={() => onNav("home")} className="hover:text-[#1B2332] transition-colors">Home</button>
+              <button onClick={() => onNav("about")} className="hover:text-[#1B2332] transition-colors">About Us</button>
+              <button onClick={() => onNav("brands")} className="hover:text-[#1B2332] transition-colors">Our Brands</button>
+              <button onClick={() => onNav("source-supply")} className="hover:text-[#1B2332] transition-colors">Source & Supply</button>
+              <button onClick={() => onNav("store")} className="text-[#1B2332] font-semibold flex items-center gap-1 hover:underline">Store <span className="text-[10px] bg-[#0284C7] text-white px-1.5 py-0.5 rounded font-bold">MCR MODEL</span></button>
+              <button onClick={() => onNav("locator")} className="hover:text-[#1B2332] transition-colors">Distributor Locator</button>
+              <button onClick={() => onNav("contact")} className="hover:text-[#1B2332] transition-colors">Contact Us</button>
+            </div>
+            
+            {/* 3-Way Login Dropdown */}
+            <div className="relative group">
+              <button className="flex items-center gap-1 text-[#1B2332] font-semibold bg-white border border-[#E5E7EB] px-3 py-1 rounded-[6px] shadow-2xs group-hover:border-[#1B2332] transition-all">
+                <User className="w-3.5 h-3.5 text-[#0284C7]" />
+                Login / Register
+                <ChevronDown className="w-3.5 h-3.5 ml-1 text-[#94A3B8] group-hover:rotate-180 transition-transform" />
+              </button>
+              <div className="absolute right-0 top-full mt-1 w-64 bg-white border border-[#E5E7EB] rounded-[8px] shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 p-2 space-y-1">
+                <div className="px-3 py-1.5 text-[11px] font-semibold text-[#94A3B8] uppercase tracking-wider border-b border-[#E5E7EB] mb-1">Select Account Type</div>
+                <button
+                  onClick={() => onNav("distributor-register")}
+                  className="w-full text-left px-3 py-2 rounded-[6px] hover:bg-[#F8FAFC] transition-colors group/btn"
+                >
+                  <div className="text-[13px] font-semibold text-[#1B2332] group-hover/btn:text-[#0284C7] flex items-center justify-between">
+                    <span>Distributor Portal</span>
+                    <span className="text-[10px] bg-[#E0F2FE] text-[#0369A1] px-1.5 py-0.5 rounded">B2B Tier</span>
+                  </div>
+                  <div className="text-[11px] text-[#94A3B8]">Wholesale pricing, POs & certificates</div>
+                </button>
+                <button
+                  onClick={() => onNav("distributor-register")}
+                  className="w-full text-left px-3 py-2 rounded-[6px] hover:bg-[#F8FAFC] transition-colors group/btn"
+                >
+                  <div className="text-[13px] font-semibold text-[#1B2332] group-hover/btn:text-[#0284C7] flex items-center justify-between">
+                    <span>Reseller Account</span>
+                    <span className="text-[10px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded">Partner</span>
+                  </div>
+                  <div className="text-[11px] text-[#94A3B8]">Resale catalog & marketing assets</div>
+                </button>
+                <button
+                  onClick={() => onNav("account")}
+                  className="w-full text-left px-3 py-2 rounded-[6px] hover:bg-[#F8FAFC] transition-colors group/btn border-t border-[#E5E7EB] mt-1 pt-2"
+                >
+                  <div className="text-[13px] font-semibold text-[#1B2332] group-hover/btn:text-[#0284C7]">End User / Standard Login</div>
+                  <div className="text-[11px] text-[#94A3B8]">Retail orders, tracking & wishlist</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       {/* ── Mobile Menu Drawer (375px collapsed state) ── */}
@@ -219,35 +273,65 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
                 )}
               </div>
 
-              {/* Quick Actions */}
+              {/* Quick Actions & Primary Pages */}
               <div className="border-t border-[#E5E7EB] mt-2 pt-2">
                 <button
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onNav("account");
-                  }}
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("about"); }}
                 >
-                  <User className="w-4 h-4 text-[#64748B]" /> My Account
+                  <span>About Us</span> <span className="text-[11px] text-[#94A3B8]">Vision / Mission</span>
                 </button>
                 <button
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onNav("rfq");
-                  }}
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("brands"); }}
                 >
-                  <FileText className="w-4 h-4 text-[#64748B]" /> Request Quote
+                  <span>Our Brands</span> <span className="text-[11px] text-[#0284C7] font-semibold">Prestan, MCR, Zoll...</span>
                 </button>
                 <button
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onNav("distributor-register");
-                  }}
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("source-supply"); }}
                 >
-                  <Building className="w-4 h-4 text-[#64748B]" /> Distributor Portal
+                  <span>Source & Supply</span> <span className="text-[11px] text-[#94A3B8]">Global Sourcing</span>
                 </button>
+                <button
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-semibold text-[#0284C7] bg-[#E0F2FE]/40 hover:bg-[#E0F2FE] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("store"); }}
+                >
+                  <span>Store (MCR Catalogue)</span> <span className="text-[10px] bg-[#0284C7] text-white px-1.5 py-0.5 rounded font-bold">MCR MODEL</span>
+                </button>
+                <button
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("locator"); }}
+                >
+                  <span>Distributor Locator</span> <span className="text-[11px] text-[#94A3B8]">Map / List</span>
+                </button>
+                <button
+                  className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                  onClick={() => { setMobileMenuOpen(false); onNav("contact"); }}
+                >
+                  <span>Contact Us</span> <span className="text-[11px] text-[#94A3B8]">Support & HQ</span>
+                </button>
+
+                <div className="border-t border-[#E5E7EB] mt-2 pt-2">
+                  <button
+                    className="w-full flex items-center gap-3 px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                    onClick={() => { setMobileMenuOpen(false); onNav("account"); }}
+                  >
+                    <User className="w-4 h-4 text-[#64748B]" /> End User / Standard Login
+                  </button>
+                  <button
+                    className="w-full flex items-center gap-3 px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                    onClick={() => { setMobileMenuOpen(false); onNav("distributor-register"); }}
+                  >
+                    <Building className="w-4 h-4 text-[#0284C7]" /> Distributor / Reseller Portal
+                  </button>
+                  <button
+                    className="w-full flex items-center gap-3 px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"
+                    onClick={() => { setMobileMenuOpen(false); onNav("rfq"); }}
+                  >
+                    <FileText className="w-4 h-4 text-[#64748B]" /> Request Quote (RFQ)
+                  </button>
+                </div>
               </div>
             </div>
 

@@ -6,7 +6,9 @@ export type Screen =
   | "home" | "category" | "product" | "cart" | "checkout"
   | "tracking" | "account" | "admin-cms" | "admin-ims"
   | "notifications" | "components" | "rfq"
-  | "distributor-register" | "distributor-pricing";
+  | "distributor-register" | "distributor-pricing"
+  | "about" | "brands" | "source-supply" | "store" | "locator" | "search"
+  | "legal" | "events" | "resources" | "career" | "sitemap" | "contact";
 
 /**
  * Stock status — four states only.
@@ -26,19 +28,33 @@ export type OrderStatus = "processing" | "packed" | "shipped" | "delivered" | "c
 
 export type Currency = "USD" | "AED";
 
+export type AccountType = "distributor" | "reseller" | "end-user";
+
 export interface Product {
   id: string;
   sku: string;
+  itemCode?: string; // Distributor-facing item code
   name: string;
   brand: string;
   category: string;
   price: number;
   stock: StockStatus;
   deliveryEstimate?: string;
+  leadTimeInline?: string; // e.g. "Production Lead Time: 14 Business Days"
   qty: number;
   image: string;
   rating: number;
   reviews: number;
+  // Deep Store/MCR Medical metadata
+  datasheetPdf?: string;
+  videoUrl?: string;
+  manualPdf?: string;
+  series?: string;
+  skinTone?: string;
+  gender?: string;
+  productType?: string;
+  size?: string;
+  packageSize?: string;
 }
 
 export interface Category {

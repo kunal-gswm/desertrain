@@ -15,6 +15,11 @@ import { ComponentLibrary } from "./screens/ComponentLibrary";
 import { RFQFlow } from "./screens/RFQFlow";
 import { DistributorRegistration } from "./screens/DistributorRegistration";
 import { DistributorPricingView } from "./screens/DistributorPricingView";
+import { SearchResultsPage } from "./screens/SearchResultsPage";
+import { 
+  StoreCataloguePage, AboutUsPage, DistributorLocatorPage, 
+  LegalPortalPage, GenericContentPage 
+} from "./screens/ContentPages";
 
 // ──────────────────────────────────────────────
 // Desert Rain Design System — Screen Navigator
@@ -22,19 +27,31 @@ import { DistributorPricingView } from "./screens/DistributorPricingView";
 
 const SCREENS: { id: Screen; label: string }[] = [
   { id: "home", label: "01 Homepage" },
-  { id: "category", label: "02 Category" },
-  { id: "product", label: "03 Product Detail" },
-  { id: "cart", label: "04 Cart" },
-  { id: "checkout", label: "05 Checkout" },
-  { id: "tracking", label: "06 Order Tracking" },
-  { id: "account", label: "07 Account" },
-  { id: "rfq", label: "08 RFQ" },
-  { id: "distributor-register", label: "09 Dist. Register" },
-  { id: "distributor-pricing", label: "10 Dist. Pricing" },
-  { id: "admin-cms", label: "11 Admin (Catalog)" },
-  { id: "admin-ims", label: "12 Admin (Inventory)" },
-  { id: "notifications", label: "13 Notifications" },
-  { id: "components", label: "14 Components" },
+  { id: "store", label: "02 Store (MCR Catalogue)" },
+  { id: "search", label: "03 Search & Filter Hub" },
+  { id: "category", label: "04 Category" },
+  { id: "product", label: "05 Product Detail" },
+  { id: "cart", label: "06 Cart" },
+  { id: "checkout", label: "07 Checkout" },
+  { id: "tracking", label: "08 Order Tracking" },
+  { id: "account", label: "09 Account (3-Tier)" },
+  { id: "rfq", label: "10 RFQ" },
+  { id: "distributor-register", label: "11 Dist. / Reseller Register" },
+  { id: "distributor-pricing", label: "12 Dist. Pricing" },
+  { id: "about", label: "13 About Us" },
+  { id: "brands", label: "14 Our Brands" },
+  { id: "source-supply", label: "15 Source & Supply" },
+  { id: "locator", label: "16 Distributor Locator" },
+  { id: "legal", label: "17 Legal Portal (6 Policies)" },
+  { id: "events", label: "18 Events & Tradeshows" },
+  { id: "resources", label: "19 Resource Center" },
+  { id: "career", label: "20 Careers" },
+  { id: "sitemap", label: "21 Site Map" },
+  { id: "contact", label: "22 Contact Us" },
+  { id: "admin-cms", label: "23 Admin (Catalog)" },
+  { id: "admin-ims", label: "24 Admin (Inventory)" },
+  { id: "notifications", label: "25 Notifications" },
+  { id: "components", label: "26 Components" },
 ];
 
 export default function App() {
@@ -48,32 +65,31 @@ export default function App() {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      {/* Demo navigation bar */}
+    <div className="min-h-screen bg-[#FAFBFC] font-sans antialiased text-[#1B2332]">
+      {/* ── Design System Top Bar — Retained for navigation review ── */}
       {showNav ? (
-        <div className="fixed top-0 left-0 right-0 z-[100] bg-[#0C1220] text-white flex items-center h-9 px-4 border-b border-white/10 shadow-sm transition-all">
-          <div className="text-[10px] font-semibold text-white/30 uppercase tracking-wider mr-3 shrink-0 hidden sm:block">
-            Desert Rain DS
+        <div className="fixed top-0 left-0 right-0 z-[100] bg-[#0C1220] text-white px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-[12px] font-mono border-b border-white/10 shadow-lg">
+          <div className="flex items-center gap-2">
+            <Layers className="w-4 h-4 text-[#38BDF8]" />
+            <span className="font-semibold tracking-wide text-white/90">DESERT RAIN LLC</span>
+            <span className="text-white/30">|</span>
+            <span className="text-[#38BDF8] font-semibold bg-[#38BDF8]/10 px-2 py-0.5 rounded">SCOPE CORRECTION v2.0</span>
           </div>
-          <div
-            className="flex-1 overflow-x-auto flex items-stretch"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {SCREENS.map((s) => (
-              <button
-                key={s.id}
-                className={`px-3 h-9 text-[10px] font-medium whitespace-nowrap border-b-2 transition-colors shrink-0 ${
-                  screen === s.id
-                    ? "border-white text-white"
-                    : "border-transparent text-white/35 hover:text-white/60"
-                }`}
-                onClick={() => navigate(s.id)}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-1 ml-3 shrink-0 border-l border-white/10 pl-3">
+
+          {/* Screen selector dropdown */}
+          <div className="flex items-center gap-2">
+            <select
+              value={screen}
+              onChange={(e) => navigate(e.target.value as Screen)}
+              className="bg-white/10 border border-white/15 rounded px-2.5 py-1 text-white text-[12px] outline-none focus:border-[#38BDF8] cursor-pointer"
+            >
+              {SCREENS.map((s) => (
+                <option key={s.id} value={s.id} className="bg-[#0C1220] text-white">
+                  {s.label}
+                </option>
+              ))}
+            </select>
+
             <button
               className="w-6 h-6 flex items-center justify-center rounded hover:bg-white/10 text-white/40 disabled:opacity-20 disabled:cursor-not-allowed"
               disabled={idx === 0}
@@ -99,7 +115,6 @@ export default function App() {
               title="Hide Navigation Bar"
             >
               <EyeOff className="w-3 h-3" />
-              <span className="hidden sm:inline">Hide</span>
             </button>
           </div>
         </div>
@@ -118,6 +133,8 @@ export default function App() {
       {/* Screen content */}
       <div className={showNav ? "pt-9 transition-all" : "pt-0 transition-all"}>
         {screen === "home" && <HomePage onNav={navigate} />}
+        {screen === "store" && <StoreCataloguePage onNav={navigate} />}
+        {screen === "search" && <SearchResultsPage onNav={navigate} />}
         {screen === "category" && <CategoryPage onNav={navigate} />}
         {screen === "product" && <ProductDetailPage onNav={navigate} />}
         {screen === "cart" && <CartPage onNav={navigate} />}
@@ -127,6 +144,16 @@ export default function App() {
         {screen === "rfq" && <RFQFlow onNav={navigate} />}
         {screen === "distributor-register" && <DistributorRegistration onNav={navigate} />}
         {screen === "distributor-pricing" && <DistributorPricingView onNav={navigate} />}
+        {screen === "about" && <AboutUsPage onNav={navigate} />}
+        {screen === "brands" && <GenericContentPage screen="brands" onNav={navigate} />}
+        {screen === "source-supply" && <GenericContentPage screen="source-supply" onNav={navigate} />}
+        {screen === "locator" && <DistributorLocatorPage onNav={navigate} />}
+        {screen === "legal" && <LegalPortalPage onNav={navigate} />}
+        {screen === "events" && <GenericContentPage screen="events" onNav={navigate} />}
+        {screen === "resources" && <GenericContentPage screen="resources" onNav={navigate} />}
+        {screen === "career" && <GenericContentPage screen="career" onNav={navigate} />}
+        {screen === "sitemap" && <GenericContentPage screen="sitemap" onNav={navigate} />}
+        {screen === "contact" && <GenericContentPage screen="contact" onNav={navigate} />}
         {screen === "admin-cms" && <AdminCMS onNav={navigate} />}
         {screen === "admin-ims" && <AdminIMS onNav={navigate} />}
         {screen === "notifications" && <NotificationsCenter onNav={navigate} />}
