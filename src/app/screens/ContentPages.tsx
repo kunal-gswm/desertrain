@@ -43,7 +43,7 @@ export function StoreCataloguePage({ onNav }: { onNav: (s: Screen) => void }) {
         <div className="bg-[#1B2332] text-white rounded-[12px] p-8 mb-8 shadow-md relative overflow-hidden">
           <div className="relative z-10 max-w-2xl">
             <span className="bg-[#0284C7] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3 inline-block">
-              Official MCR Medical Structural Model
+              Official B2B Medical Catalogue
             </span>
             <h1 className="text-[30px] font-bold mb-2">Desert Rain Store & Catalogue</h1>
             <p className="text-white/70 text-[14.5px] leading-relaxed">
@@ -58,7 +58,7 @@ export function StoreCataloguePage({ onNav }: { onNav: (s: Screen) => void }) {
             <div className="bg-white border border-[#E5E7EB] rounded-[10px] p-5 shadow-2xs space-y-6">
               <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-3">
                 <span className="font-bold text-[#1B2332] text-[15px] flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#0284C7]" /> MCR Filter Suite
+                  <SlidersHorizontal className="w-4 h-4 text-[#0284C7]" /> Filter Suite
                 </span>
                 <button onClick={() => { setSelectedCat("All"); setSelectedBrand("All"); setSkinTone("All"); setGender("All"); setSeries("All"); setSize("All"); }} className="text-[12px] text-[#0284C7] hover:underline font-medium">Reset All</button>
               </div>

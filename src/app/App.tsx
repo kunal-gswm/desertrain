@@ -27,7 +27,7 @@ import {
 
 const SCREENS: { id: Screen; label: string }[] = [
   { id: "home", label: "01 Homepage" },
-  { id: "store", label: "02 Store (MCR Catalogue)" },
+  { id: "store", label: "02 Store (Catalogue)" },
   { id: "search", label: "03 Search & Filter Hub" },
   { id: "category", label: "04 Category" },
   { id: "product", label: "05 Product Detail" },

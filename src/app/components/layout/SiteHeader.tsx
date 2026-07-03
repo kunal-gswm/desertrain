@@ -172,7 +172,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
               <button onClick={() => onNav("about")} className="hover:text-[#1B2332] transition-colors">About Us</button>
               <button onClick={() => onNav("brands")} className="hover:text-[#1B2332] transition-colors">Our Brands</button>
               <button onClick={() => onNav("source-supply")} className="hover:text-[#1B2332] transition-colors">Source & Supply</button>
-              <button onClick={() => onNav("store")} className="text-[#1B2332] font-semibold flex items-center gap-1 hover:underline">Store <span className="text-[10px] bg-[#0284C7] text-white px-1.5 py-0.5 rounded font-bold">MCR MODEL</span></button>
+              <button onClick={() => onNav("store")} className="hover:text-[#1B2332] transition-colors">Store</button>
               <button onClick={() => onNav("locator")} className="hover:text-[#1B2332] transition-colors">Distributor Locator</button>
               <button onClick={() => onNav("contact")} className="hover:text-[#1B2332] transition-colors">Contact Us</button>
             </div>
@@ -297,7 +297,7 @@ export function SiteHeader({ onNav, showCategories = false }: { onNav: (s: Scree
                   className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-semibold text-[#0284C7] bg-[#E0F2FE]/40 hover:bg-[#E0F2FE] transition-colors"
                   onClick={() => { setMobileMenuOpen(false); onNav("store"); }}
                 >
-                  <span>Store (MCR Catalogue)</span> <span className="text-[10px] bg-[#0284C7] text-white px-1.5 py-0.5 rounded font-bold">MCR MODEL</span>
+                  <span>Store</span>
                 </button>
                 <button
                   className="w-full flex items-center justify-between px-5 py-3 text-[15px] font-medium text-[#1B2332] hover:bg-[#F1F3F5] transition-colors"

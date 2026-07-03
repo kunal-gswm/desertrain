@@ -112,7 +112,7 @@ export function SiteFooter({ onNav }: { onNav?: (s: Screen) => void }) {
         {/* Column 4: Store & Catalog */}
         <div>
           <div className="text-[13px] font-semibold text-white/40 uppercase tracking-wide mb-4">
-            MCR Medical Model
+            Product Catalogue
           </div>
           <ul className="space-y-2.5 text-[14px] text-white/60">
             <li><a href="#store" onClick={(e) => handleNav("store", e)} className="hover:text-white transition-colors">Store (Full Catalogue)</a></li>

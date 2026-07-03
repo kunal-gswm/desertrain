@@ -131,7 +131,7 @@ export function SearchResultsPage({ onNav }: { onNav: (s: Screen) => void }) {
               {/* Explicit CPR Manikin Filter (Required Scope) */}
               <div>
                 <label className="text-[13px] font-semibold text-[#1B2332] block mb-2.5">
-                  CPR Manikin Type (MCR Model)
+                  CPR Manikin Type (Age & Anatomy)
                 </label>
                 <div className="grid grid-cols-2 gap-1.5 bg-[#F8FAFC] p-1 rounded-[6px] border border-[#E5E7EB]">
                   {["All", "Adult", "Child", "Infant"].map((type) => (
